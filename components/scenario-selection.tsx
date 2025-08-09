@@ -1,11 +1,12 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Settings, Star, Play, Clock } from "lucide-react"
-import type { AccessibilityOptions, ChildProfile, Scenario } from "@/app/page"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ArrowLeft, Star, Play, Clock } from "lucide-react";
+import type { AccessibilityOptions, ChildProfile, Scenario } from "@/app/page";
+import { GoGear } from "react-icons/go";
 
 // Floating Stickers Background Component
 const FloatingStickers = () => {
@@ -30,7 +31,7 @@ const FloatingStickers = () => {
     "🎶",
     "🌺",
     "🌻",
-  ]
+  ];
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
@@ -58,15 +59,15 @@ const FloatingStickers = () => {
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
 interface ScenarioSelectionProps {
-  selectedChild: ChildProfile | null
-  onScenarioSelect: (scenario: Scenario) => void
-  onBack: () => void
-  onSettings: () => void
-  accessibilityOptions: AccessibilityOptions
+  selectedChild: ChildProfile | null;
+  onScenarioSelect: (scenario: Scenario) => void;
+  onBack: () => void;
+  onSettings: () => void;
+  accessibilityOptions: AccessibilityOptions;
 }
 
 const mockScenarios: Scenario[] = [
@@ -74,7 +75,8 @@ const mockScenarios: Scenario[] = [
     id: "sharing-toy",
     title: "The Toy Tug-of-War",
     category: "sharing",
-    description: "Two friends both want to play with the same toy. What should you do?",
+    description:
+      "Two friends both want to play with the same toy. What should you do?",
     icon: "🧸",
     completed: true,
     choices: [
@@ -87,11 +89,17 @@ const mockScenarios: Scenario[] = [
     id: "feeling-frustrated",
     title: "Feeling Frustrated",
     category: "feelings",
-    description: "When things don't go your way, how do you handle big feelings?",
+    description:
+      "When things don't go your way, how do you handle big feelings?",
     icon: "😤",
     completed: true,
     choices: [
-      { id: "breathe", text: "Take deep breaths", type: "positive", icon: "🌬️" },
+      {
+        id: "breathe",
+        text: "Take deep breaths",
+        type: "positive",
+        icon: "🌬️",
+      },
       { id: "yell", text: "Yell loudly", type: "negative", icon: "😡" },
       { id: "count", text: "Count to ten", type: "positive", icon: "🔢" },
     ],
@@ -106,7 +114,12 @@ const mockScenarios: Scenario[] = [
     choices: [
       { id: "hello", text: "Say hello nicely", type: "positive", icon: "😊" },
       { id: "ignore", text: "Ignore them", type: "negative", icon: "😐" },
-      { id: "ask-play", text: "Ask to play together", type: "positive", icon: "🎮" },
+      {
+        id: "ask-play",
+        text: "Ask to play together",
+        type: "positive",
+        icon: "🎮",
+      },
     ],
   },
   {
@@ -132,30 +145,65 @@ const mockScenarios: Scenario[] = [
     choices: [
       { id: "comfort", text: "Give a hug", type: "positive", icon: "🤗" },
       { id: "ignore-sad", text: "Ignore them", type: "negative", icon: "😑" },
-      { id: "ask-help", text: "Ask what's wrong", type: "positive", icon: "❓" },
+      {
+        id: "ask-help",
+        text: "Ask what's wrong",
+        type: "positive",
+        icon: "❓",
+      },
     ],
   },
   {
     id: "school-adventure",
     title: "School Adventure",
     category: "sharing",
-    description: "It's snack time and you have extra cookies. What do you do?",
+    description: "You have extra cookies in lunch. What do you do?",
     icon: "🍪",
     completed: false,
     choices: [
-      { id: "share-cookies", text: "Share with friends", type: "positive", icon: "🍪" },
+      {
+        id: "share-cookies",
+        text: "Share with friends",
+        type: "positive",
+        icon: "🍪",
+      },
       { id: "keep-all", text: "Keep them all", type: "negative", icon: "🙅" },
-      { id: "save-some", text: "Share some, save some", type: "positive", icon: "⚖️" },
+      {
+        id: "save-some",
+        text: "Share some, save some",
+        type: "positive",
+        icon: "⚖️",
+      },
     ],
   },
-]
+];
 
 const categories = [
-  { id: "all", name: "All Stories", icon: "📖", color: "bg-purple-100 text-purple-700" },
-  { id: "sharing", name: "Sharing", icon: "🧸", color: "bg-yellow-100 text-yellow-700" },
-  { id: "feelings", name: "Feelings", icon: "😊", color: "bg-pink-100 text-pink-700" },
-  { id: "friends", name: "Friends", icon: "💎", color: "bg-blue-100 text-blue-700" },
-]
+  {
+    id: "all",
+    name: "All Stories",
+    icon: "📖",
+    color: "bg-purple-100 text-purple-700",
+  },
+  {
+    id: "sharing",
+    name: "Sharing",
+    icon: "🧸",
+    color: "bg-yellow-100 text-yellow-700",
+  },
+  {
+    id: "feelings",
+    name: "Feelings",
+    icon: "😊",
+    color: "bg-pink-100 text-pink-700",
+  },
+  {
+    id: "friends",
+    name: "Friends",
+    icon: "💎",
+    color: "bg-blue-100 text-blue-700",
+  },
+];
 
 export default function ScenarioSelection({
   selectedChild,
@@ -164,25 +212,27 @@ export default function ScenarioSelection({
   onSettings,
   accessibilityOptions,
 }: ScenarioSelectionProps) {
-  const [selectedCategory, setSelectedCategory] = useState("all")
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const speakText = (text: string) => {
     if (accessibilityOptions.textToSpeech && "speechSynthesis" in window) {
-      const utterance = new SpeechSynthesisUtterance(text)
-      utterance.rate = accessibilityOptions.narrationSpeed
-      speechSynthesis.speak(utterance)
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = accessibilityOptions.narrationSpeed;
+      speechSynthesis.speak(utterance);
     }
-  }
+  };
 
   const filteredScenarios =
     selectedCategory === "all"
       ? mockScenarios
-      : mockScenarios.filter((scenario) => scenario.category === selectedCategory)
+      : mockScenarios.filter(
+          (scenario) => scenario.category === selectedCategory
+        );
 
   const handleScenarioClick = (scenario: Scenario) => {
-    speakText(`Starting ${scenario.title}. ${scenario.description}`)
-    onScenarioSelect(scenario)
-  }
+    speakText(`Starting ${scenario.title}. ${scenario.description}`);
+    onScenarioSelect(scenario);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 p-6 relative">
@@ -191,10 +241,13 @@ export default function ScenarioSelection({
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">
-            <Button onClick={onBack} variant="ghost" size="lg">
-              <ArrowLeft className="h-5 w-5 mr-2" />
-              Back
-            </Button>
+            <div
+              onClick={onBack}
+              className="hover:text-black group cursor-pointer text-xl md:text-2xl font-semibold text-blue-600 flex items-center gap-1 justify-center p-2  rounded-2l"
+            >
+              <ArrowLeft className="h-10 w-10    p-2 rounded-2xl  cursor-pointer" />{" "}
+              <span className="text-xl pr-4">Back</span>
+            </div>
             {selectedChild && (
               <div className="flex items-center gap-3">
                 <div className="text-3xl">{selectedChild.avatar}</div>
@@ -204,22 +257,24 @@ export default function ScenarioSelection({
                       accessibilityOptions.textSize === "large"
                         ? "text-2xl"
                         : accessibilityOptions.textSize === "small"
-                          ? "text-lg"
-                          : "text-xl"
+                        ? "text-lg"
+                        : "text-xl"
                     }`}
                   >
                     {selectedChild.name}'s Adventures
                   </h2>
                   <p className="text-gray-600 text-sm">
-                    {selectedChild.scenariosCompleted} of {selectedChild.totalScenarios} completed
+                    {selectedChild.scenariosCompleted} of{" "}
+                    {selectedChild.totalScenarios} completed
                   </p>
                 </div>
               </div>
             )}
           </div>
-          <Button onClick={onSettings} variant="ghost" size="icon">
-            <Settings className="h-6 w-6" />
-          </Button>
+          <GoGear
+            onClick={onSettings}
+            className="hover:bg-white/20 text-blue-600 transition-colors h-10 w-10 md:h-12 md:w-12 p-2 rounded-2xl hover:text-black cursor-pointer"
+          />
         </div>
 
         {/* Category Tabs */}
@@ -229,15 +284,25 @@ export default function ScenarioSelection({
               <Button
                 key={category.id}
                 onClick={() => {
-                  setSelectedCategory(category.id)
-                  speakText(`Selected ${category.name} category`)
+                  setSelectedCategory(category.id);
+                  speakText(`Selected ${category.name} category`);
                 }}
-                variant={selectedCategory === category.id ? "default" : "outline"}
+                variant={
+                  selectedCategory === category.id ? "default" : "outline"
+                }
                 size="lg"
-                className={`flex items-center gap-2 ${selectedCategory === category.id ? category.color : ""}`}
+                className={`flex items-center gap-2 ${
+                  selectedCategory === category.id ? category.color : ""
+                }`}
               >
                 <span className="text-xl">{category.icon}</span>
-                <span className={accessibilityOptions.textSize === "large" ? "text-lg" : "text-base"}>
+                <span
+                  className={
+                    accessibilityOptions.textSize === "large"
+                      ? "text-lg"
+                      : "text-base"
+                  }
+                >
                   {category.name}
                 </span>
               </Button>
@@ -258,15 +323,14 @@ export default function ScenarioSelection({
               <CardHeader className="text-center pb-4">
                 <div className="relative">
                   <div className="text-6xl mb-4">{scenario.icon}</div>
-
                 </div>
                 <CardTitle
                   className={`text-gray-900 ${
                     accessibilityOptions.textSize === "large"
                       ? "text-xl"
                       : accessibilityOptions.textSize === "small"
-                        ? "text-base"
-                        : "text-lg"
+                      ? "text-base"
+                      : "text-lg"
                   }`}
                 >
                   {scenario.title}
@@ -279,8 +343,8 @@ export default function ScenarioSelection({
                     accessibilityOptions.textSize === "large"
                       ? "text-base"
                       : accessibilityOptions.textSize === "small"
-                        ? "text-sm"
-                        : "text-sm"
+                      ? "text-sm"
+                      : "text-sm"
                   }`}
                   onClick={() => speakText(scenario.description)}
                 >
@@ -301,7 +365,9 @@ export default function ScenarioSelection({
                   size="lg"
                 >
                   <Play className="h-5 w-5" />
-                  <span>{scenario.completed ? "Play Again" : "Start Story"}</span>
+                  <span>
+                    {scenario.completed ? "Play Again" : "Start Story"}
+                  </span>
                 </Button>
 
                 {scenario.completed && (
@@ -325,11 +391,13 @@ export default function ScenarioSelection({
         {filteredScenarios.length === 0 && (
           <div className="text-center py-16">
             <div className="text-6xl mb-4">🔍</div>
-            <h3 className="text-xl font-semibold text-gray-700 mb-2">No stories found</h3>
+            <h3 className="text-xl font-semibold text-gray-700 mb-2">
+              No stories found
+            </h3>
             <p className="text-gray-500">Try selecting a different category</p>
           </div>
         )}
       </div>
     </div>
-  )
+  );
 }

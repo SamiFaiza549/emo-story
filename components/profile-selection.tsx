@@ -242,12 +242,12 @@ export default function ProfileSelection({
           </div>
           <div className="flex items-center gap-3 sm:gap-4">
               <GoGear
-              onClick={onSettings}
-              className="hover:bg-white/20 text-blue-600 transition-colors h-20 w-20 sm:h-16 sm:w-16 p-2 rounded-2xl hover:text-black cursor-pointer"
-              />
+            onClick={onSettings}
+            className="hover:bg-white/20 text-blue-600 transition-colors h-10 w-10 md:h-12 md:w-12 p-2 rounded-2xl hover:text-black cursor-pointer"
+          />
               <FaRegQuestionCircle
               onClick={handleHelpClick}
-              className="text-blue-600 hover:text-black cursor-pointer transition-colors h-20 w-20 sm:h-16 sm:w-16    p-2 rounded-xl bg-white/20"
+             className="hover:bg-white/20 text-blue-600 transition-colors h-10 w-10 md:h-12 md:w-12 p-2 rounded-2xl hover:text-black cursor-pointer"
               />
           </div>
         </div>
