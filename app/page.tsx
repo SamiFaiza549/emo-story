@@ -102,15 +102,16 @@ export default function App() {
   useEffect(() => {
     if (currentScreen === "splash" && appStateLoaded && profilesLoaded && accessibilityLoaded) {
       const timer = setTimeout(() => {
-        setCurrentScreen(isFirstTime ? "onboarding" : "profile-selection")
+        // Always show onboarding after splash screen
+        setCurrentScreen("onboarding")
       }, 3000)
       return () => clearTimeout(timer)
     }
-  }, [currentScreen, isFirstTime, appStateLoaded, profilesLoaded, accessibilityLoaded])
+  }, [currentScreen, appStateLoaded, profilesLoaded, accessibilityLoaded])
 
   // Don't render anything until data is loaded
   if (!appStateLoaded || !profilesLoaded || !accessibilityLoaded) {
-    return <SplashScreen onAccessibilityClick={() => {}} />
+    return <SplashScreen onAccessibilityClick={() => setCurrentScreen("accessibility")} />
   }
 
   const handleScreenChange = (screen: AppScreen) => {
@@ -192,7 +193,7 @@ export default function App() {
       case "onboarding":
         return (
           <OnboardingFlow
-            onComplete={() => setCurrentScreen("accessibility")}
+            onComplete={() => setCurrentScreen("profile-selection")}
             accessibilityOptions={accessibilityOptions}
           />
         )
