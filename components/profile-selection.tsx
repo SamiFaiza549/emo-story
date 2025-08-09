@@ -241,6 +241,15 @@ export default function ProfileSelection({
             </h2>
           </div>
           <div className="flex items-center gap-3 sm:gap-4">
+            <Button
+                onClick={onParentLogin}
+                variant="outline"
+                size="lg"
+                className="cursor-pointer hover:bg-blue-300 flex items-center space-x-2 mx-auto bg-transparent"
+              >
+                <Lock className="h-5 w-5" />
+                <span>Parent/Therapist Login</span>
+              </Button>
               <GoGear
             onClick={onSettings}
             className="hover:bg-white/20 text-blue-600 transition-colors h-10 w-10 md:h-12 md:w-12 p-2 rounded-2xl hover:text-black cursor-pointer"

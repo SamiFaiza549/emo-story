@@ -94,7 +94,7 @@ const onboardingSteps = [
     characterName: "Bella",
     title: "Show Your Feelings",
     content: "The app can see if you're smiling and tell you 'Great job!' when you show kind expressions!",
-    animation: "flutter",
+    animation: "hop",
     demonstration: "facial-recognition",
   },
   {
