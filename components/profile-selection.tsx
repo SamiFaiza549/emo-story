@@ -410,15 +410,7 @@ export default function ProfileSelection({
 
             {/* Parent/Therapist Login */}
             <div className="text-center">
-              <Button
-                onClick={onParentLogin}
-                variant="outline"
-                size="lg"
-                className="flex items-center space-x-2 mx-auto bg-transparent"
-              >
-                <Lock className="h-5 w-5" />
-                <span>Parent/Therapist Login</span>
-              </Button>
+              
             </div>
           </div>
         </div>
