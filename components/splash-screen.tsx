@@ -1,4 +1,3 @@
-"use client"
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
@@ -95,14 +94,7 @@ export default function SplashScreen({ onAccessibilityClick }: SplashScreenProps
       <FloatingStickers />
 
       {/* Accessibility Button */}
-      <Button
-        onClick={onAccessibilityClick}
-        className="absolute top-6 right-6 bg-white/80 hover:bg-white/90 text-blue-600 border-blue-200 shadow-lg z-10"
-        size="lg"
-      >
-        <Accessibility className="h-6 w-6 mr-2" />
-        Accessibility Options
-      </Button>
+
 
       {/* Main Content */}
       <div className="text-center space-y-8 z-10 relative">
