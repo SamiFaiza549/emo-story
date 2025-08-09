@@ -1,5 +1,4 @@
+# emo story
+This is a simple app to share your emotions with your friends and family.
 
-# TODO
-- [] responsive design
-- [] bookmark for profile
-- [x] visual improvement animated images
+
